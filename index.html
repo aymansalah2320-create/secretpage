@@ -1,76 +1,99 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-<meta charset="UTF-8">
-<title>Secret Page</title>
-<style>
-  body {
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(120deg, #ff0080, #7928ca, #ff8c00);
-    background-size: 600% 600%;
-    animation: gradientBG 15s ease infinite;
-    color:white;
-    text-align:center;
-    display:none; /* نخفي المحتوى لحد ما يدخل الباسورد */
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Love Page</title>
+    <style>
+        /* ====== CSS ====== */
 
-  @keyframes gradientBG {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-  }
+        /* صفحة الباسورد */
+        body {
+            margin:0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://i.postimg.cc/KY49hDV7/SN.jpg') no-repeat center center/cover;
+            backdrop-filter: blur(6px);
+        }
 
-  h1, p {
-    opacity:0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s forwards;
-  }
+        .password-box {
+            background: rgba(255,255,255,0.5);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
 
-  h1 { animation-delay: 0.5s; font-size:2.5em; }
-  p  { animation-delay: 1.2s; font-size:1.5em; }
+        .password-box input {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            width: 80%;
+            font-size: 16px;
+        }
 
-  @keyframes fadeInUp {
-    to {opacity:1; transform: translateY(0);}
-  }
+        .password-box button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border:none;
+            border-radius:10px;
+            background-color:#ff5c5c;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+        }
 
-  img {
-    margin-top: 20px;
-    max-width: 300px;
-    border-radius: 15px;
-    opacity:0;
-    transform: scale(0.8);
-    animation: imgIn 1s forwards;
-    animation-delay: 2s;
-  }
+        /* صفحة المحتوى */
+        #content-screen {
+            display:none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align:center;
+            height:100vh;
+            background: pink;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
 
-  @keyframes imgIn {
-    to {opacity:1; transform: scale(1);}
-  }
-</style>
+        #content-screen h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        #content-screen p {
+            font-size: 1.2em;
+            max-width: 500px;
+        }
+
+        /* تأثير القلوب */
+        @keyframes floatHearts {
+            0% { transform: translateY(100vh) rotate(0deg); opacity:1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity:0; }
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: floatHearts 5s linear infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity:0; }
+            to { opacity:1; }
+        }
+    </style>
 </head>
 <body>
-
-<h1>🔥 مرحبا بك 🔥</h1>
-<p>دي رسالة سرية مخصوص ليك بالظبط زي الموقع الأصلي 😎</p>
-<img src="https://i.postimg.cc/8CXsm7fC/secret-image.jpg">
-
-<script>
-const password = "sandra"; // الباسورد اللي انت طلبته
-const userPass = prompt("ادخل الباسورد:");
-
-if(userPass === password){
-    document.body.style.display = "flex"; // يظهر المحتوى بعد الباسورد
-} else {
-    alert("الباسورد غلط!");
-    document.body.innerHTML = "<h1>Access Denied</h1>";
-}
-</script>
-
-</body>
-</html>
+    <!-- صفحة الباسورد -->
+    <div id="password-screen">
+        <div class="password-box">
+            <h2>الباسورد: اسمك ي بسبوس ♥️</h2>
+            <input type="password" id="password-input
