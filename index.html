@@ -17,6 +17,7 @@
     animation: gradientBG 15s ease infinite;
     color:white;
     text-align:center;
+    display:none; /* نخفي المحتوى لحد ما يدخل الباسورد */
   }
 
   @keyframes gradientBG {
@@ -58,6 +59,18 @@
 <h1>🔥 مرحبا بك 🔥</h1>
 <p>دي رسالة سرية مخصوص ليك بالظبط زي الموقع الأصلي 😎</p>
 <img src="https://i.postimg.cc/8CXsm7fC/secret-image.jpg">
+
+<script>
+const password = "sandra"; // الباسورد اللي انت طلبته
+const userPass = prompt("ادخل الباسورد:");
+
+if(userPass === password){
+    document.body.style.display = "flex"; // يظهر المحتوى بعد الباسورد
+} else {
+    alert("الباسورد غلط!");
+    document.body.innerHTML = "<h1>Access Denied</h1>";
+}
+</script>
 
 </body>
 </html>
