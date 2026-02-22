@@ -1,56 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>Secret Page</title>
-  <style>
-    body {
-      text-align: center;
-      font-family: Arial;
-      background: #111;
-      color: white;
-      margin-top: 100px;
-    }
-    img {
-      width: 300px;
-      margin-top: 20px;
-      border-radius: 15px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Secret Page</title>
+<style>
+  body {
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #ff0080, #7928ca, #ff8c00);
+    background-size: 600% 600%;
+    animation: gradientBG 15s ease infinite;
+    color:white;
+    text-align:center;
+  }
+
+  @keyframes gradientBG {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+  }
+
+  h1, p {
+    opacity:0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+  }
+
+  h1 { animation-delay: 0.5s; font-size:2.5em; }
+  p  { animation-delay: 1.2s; font-size:1.5em; }
+
+  @keyframes fadeInUp {
+    to {opacity:1; transform: translateY(0);}
+  }
+
+  img {
+    margin-top: 20px;
+    max-width: 300px;
+    border-radius: 15px;
+    opacity:0;
+    transform: scale(0.8);
+    animation: imgIn 1s forwards;
+    animation-delay: 2s;
+  }
+
+  @keyframes imgIn {
+    to {opacity:1; transform: scale(1);}
+  }
+</style>
 </head>
 <body>
 
-  <h1 id="title">Loading...</h1>
-  <p id="text"></p>
-  <img id="image" style="display:none;">
+<h1 id="title">Loading...</h1>
+<p id="text"></p>
+<img id="image">
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get('id');
 
-    const data = {
-      yusuf: {
-        title: "🔥 Welcome Yusuf 🔥",
-        text: "دي رسالة سرية مخصوص ليك 😎",
-        image: "https://i.imgur.com/3ZQ3Z4C.jpg"
-      },
-      pubg: {
-        title: "🎮 PUBG Mode 🎮",
-        text: "جاهز تنزل سكواد؟ 😏",
-        image: "https://i.imgur.com/tXqQX8K.jpg"
-      }
-    };
+// هنا نخلي ID واحد فقط زي الموقع الأصلي
+const data = {
+  b5tlBK8PIxDh6fzmKErx: {
+    title: "🔥 مرحبا بك 🔥",
+    text: "دي رسالة سرية مخصوص ليك بالضبط زي الموقع الأصلي 😎",
+    image: "https://i.imgur.com/3ZQ3Z4C.jpg"
+  }
+};
 
-    if (id && data[id]) {
-      document.getElementById("title").textContent = data[id].title;
-      document.getElementById("text").textContent = data[id].text;
-      document.getElementById("image").src = data[id].image;
-      document.getElementById("image").style.display = "block";
-    } else {
-      document.getElementById("title").textContent = "🚫 Access Denied";
-      document.getElementById("text").textContent = "الرابط ده مش شغال يا نجم 😅";
-    }
-  </script>
+if(id && data[id]){
+  document.getElementById("title").textContent = data[id].title;
+  document.getElementById("text").textContent = data[id].text;
+  document.getElementById("image").src = data[id].image;
+} else {
+  document.getElementById("title").textContent = "🚫 Access Denied";
+  document.getElementById("text").textContent = "الرابط ده مش شغال 😅";
+}
+</script>
 
 </body>
 </html>
