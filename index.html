@@ -3,21 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <title>Secret Page</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      background: #111;
+      color: white;
+      margin-top: 100px;
+    }
+    img {
+      width: 300px;
+      margin-top: 20px;
+      border-radius: 15px;
+    }
+  </style>
 </head>
-<body style="text-align:center; font-family:Arial; margin-top:100px;">
+<body>
 
-  <h1 id="message">Loading...</h1>
+  <h1 id="title">Loading...</h1>
+  <p id="text"></p>
+  <img id="image" style="display:none;">
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
 
-    if (id) {
-      document.getElementById('message').textContent =
-        "Your secret ID is: " + id;
+    const data = {
+      yusuf: {
+        title: "🔥 Welcome Yusuf 🔥",
+        text: "دي رسالة سرية مخصوص ليك 😎",
+        image: "https://i.imgur.com/3ZQ3Z4C.jpg"
+      },
+      pubg: {
+        title: "🎮 PUBG Mode 🎮",
+        text: "جاهز تنزل سكواد؟ 😏",
+        image: "https://i.imgur.com/tXqQX8K.jpg"
+      }
+    };
+
+    if (id && data[id]) {
+      document.getElementById("title").textContent = data[id].title;
+      document.getElementById("text").textContent = data[id].text;
+      document.getElementById("image").src = data[id].image;
+      document.getElementById("image").style.display = "block";
     } else {
-      document.getElementById('message').textContent =
-        "No ID provided!";
+      document.getElementById("title").textContent = "🚫 Access Denied";
+      document.getElementById("text").textContent = "الرابط ده مش شغال يا نجم 😅";
     }
   </script>
 
