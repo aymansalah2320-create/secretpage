@@ -55,32 +55,9 @@
 </head>
 <body>
 
-<h1 id="title">Loading...</h1>
-<p id="text"></p>
-<img id="image">
-
-<script>
-const params = new URLSearchParams(window.location.search);
-const id = params.get('id');
-
-// هنا نخلي ID واحد فقط زي الموقع الأصلي
-const data = {
-  b5tlBK8PIxDh6fzmKErx: {
-    title: "🔥 مرحبا بك 🔥",
-    text: "دي رسالة سرية مخصوص ليك بالضبط زي الموقع الأصلي 😎",
-    image: "https://i.imgur.com/3ZQ3Z4C.jpg"
-  }
-};
-
-if(id && data[id]){
-  document.getElementById("title").textContent = data[id].title;
-  document.getElementById("text").textContent = data[id].text;
-  document.getElementById("image").src = data[id].image;
-} else {
-  document.getElementById("title").textContent = "🚫 Access Denied";
-  document.getElementById("text").textContent = "الرابط ده مش شغال 😅";
-}
-</script>
+<h1>🔥 مرحبا بك 🔥</h1>
+<p>دي رسالة سرية مخصوص ليك بالضبط زي الموقع الأصلي 😎</p>
+<img src="https://i.imgur.com/3ZQ3Z4C.jpg">
 
 </body>
 </html>
